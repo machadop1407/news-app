@@ -4,9 +4,8 @@ const app = express()
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-app.use(express.static('public'))
 
-app.get('/news', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index')
 })
 
