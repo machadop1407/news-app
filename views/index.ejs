@@ -27,6 +27,19 @@
         </ul>
       </nav>
       
+
+      <div class="container-fluid">
+        <div class="row text-center justify-content-center">
+          <% if (articles) { %> 
+          <div class="col-lg-4">
+              <h1><%= articles[0].title%></h1>
+              <hr>
+              <p>Author: <%= articles[0].author %></p>
+              <p><%= articles[0].description %></p>
+          </div>
+        <% } %>
+        </div>
+      </div>
       
       <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
