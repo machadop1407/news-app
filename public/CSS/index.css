@@ -1,3 +1,27 @@
+
 body {
-    background-color: black;
+    height: 100%;
 }
+
+.navbar.navbar-expand-sm.bg-dark.navbar-dark { 
+    background-color: #0dafe0 !important;
+}
+
+a {
+color: white !important;
+font-size: 30px;
+font-family: "Avenir-Next" sans-serif;
+}
+
+a:hover {
+    font-weight: 600;
+}
+
+footer {
+    color: white;
+    
+  }
+
+  footer a {
+      font-size: 18px;
+  }
