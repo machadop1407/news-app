@@ -4,7 +4,7 @@ const app = express()
 
 //NEWS API
 const NewsAPI = require('newsapi')
-const newsapi = new NewsAPI('15e9098a61a3b7915a99983e1df5ae70aeedc89446ecd1e6318ddb20fb49fa3e')
+const newsapi = new NewsAPI('046b7a8dcf034c39a8dc468583bd0253')
 
 //GOOGLE API
 const GSR = require('google-search-results-nodejs')
@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
         from: weekAgo,
         to: date,
     }).then(response => {
+        console.log(response.articles[0])
         res.render('index', {articles: response.articles})
     });
 })

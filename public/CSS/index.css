@@ -16,10 +16,16 @@ a:hover {
     font-weight: 600;
 }
 
-.col-lg-4 {
+/* .col-lg-4 {
     border: 2px solid black;
-}
+} */
 
+.collapse-content .fa.fa-heart:hover {
+    color: #f44336 !important;
+  }
+  .collapse-content .fa.fa-share-alt:hover {
+    color: #0d47a1 !important;
+  }
 
 footer {
     color: white;
