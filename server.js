@@ -40,7 +40,8 @@ app.get('/volunteer', (req, res) => {
         google_domain: "google.com",
         gl: "ca",
         hl: "en",
-        location: "Canada",
+        location: "United States",
+        distance: "25km"
         
     };
     
