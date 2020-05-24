@@ -4,35 +4,30 @@
 <head>
   <title> News </title>
   <link rel="stylesheet" type="text/css" href="../CSS/index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="/">
-      <img src="../images/logo.png" alt="logo" style="width:65px;">
-    </a>
-
-    <!-- Links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/">News</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/volunteer">Volunteer</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/donate">Donate</a>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><img src="../images/logo.png" style="width: 60px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">News</a>
+        <a class="nav-item nav-link" href="/volunteer">Volunteer</a>
+        <a class="nav-item nav-link" href="/donate">Donate</a>
+      </div>
+    </div>
   </nav>
-
 
   <div class="container-fluid">
     <div class="row text-center justify-content-center">
       <% if (articles) { %>
+        <a href="<%=articles[0].url%>" id=newLink>
       <div class="col-lg-4">
 
         <!-- Card -->
@@ -45,7 +40,7 @@
             <div>
 
               <!-- Title -->
-              <h4 class="card-title font-weight-bold mb-2"> <%=articles[0].title%></h4>
+              <h4 class="card-title font-weight-bold mb-2" style="color: black;"> <%=articles[0].title%></h4>
               <!-- Subtitle -->
               <p class="card-text"><i class="far fa-clock pr-2"></i><%=articles[0].author%></p>
 
@@ -55,8 +50,7 @@
 
           <!-- Card image -->
           <div class="view overlay">
-            <img class="card-img-top rounded-0" src="<%=articles[0].urlToImage%>"
-              alt="Card image cap">
+            <img class="card-img-top rounded-0" src="<%=articles[0].urlToImage%>" alt="Card image cap">
             <a href="#!">
               <div class="mask rgba-white-slight"></div>
             </a>
@@ -70,11 +64,12 @@
           </div>
 
           <div class="card-footer">
-            <%=articles[0].publishedAt%>
+            <%=articles[0].publishedAt.toString().substring(0,10)%>
           </div>
 
         </div>
       </div>
+      </a>
       <!-- Card -->
       <% } %>
     </div>
@@ -87,6 +82,5 @@
   </footer>
 
 </body>
-
 
 </html>

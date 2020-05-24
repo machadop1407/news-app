@@ -17,18 +17,20 @@ app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-    var today = new Date();
-    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    var weekAgo = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() - 7)
-    newsapi.v2.topHeadlines({
-        q: 'covid-19',
-        language: 'en',
-        from: weekAgo,
-        to: date,
-    }).then(response => {
-        console.log(response.articles[0])
-        res.render('index', {articles: response.articles})
-    });
+    // var today = new Date();
+    // var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    // var weekAgo = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() - 7)
+    // newsapi.v2.topHeadlines({
+    //     q: 'covid-19',
+    //     language: 'en',
+    //     from: weekAgo,
+    //     to: date,
+    // }).then(response => {
+    //     console.log(response.articles[0])
+    //     res.render('index', {articles: response.articles})
+    // });
+
+    res.render('index', {articles: [{url: "sss", title: "snsns", description: "cacabb", author: "iiiii", urlToImage: "llll", publishedAt: "vishal"}]})
 })
 
 app.get('/volunteer', (req, res) => {

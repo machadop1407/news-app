@@ -1,48 +1,75 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title> Volunteer </title>
-<link rel="stylesheet" type="text/css" href="../CSS/index.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <title> Volunteer </title>
+  <link rel="stylesheet" type="text/css" href="../CSS/index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!-- Brand/logo -->
-        <a class="navbar-brand" href="#">
-          <img src="../images/logo.png" alt="logo" style="width:65px;"><!-- <img src="bird.jpg" alt="logo" style="width:40px;"> -->
-        </a>
-      
-
-        <!-- Links -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/volunteer">Volunteer</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/donate">Donate</a>
-          </li>
-        </ul>
-      </nav>
-
-      <div>
-        <p>
-          <% for (var i = 0; i < 10; i++) { %>
-            <%= jobs[i].title %>
-          <% } %>
-        </p>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/"><img src="../images/logo.png" style="width: 60px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">News</a>
+        <a class="nav-item nav-link" href="/volunteer">Volunteer</a>
+        <a class="nav-item nav-link" href="/donate">Donate</a>
       </div>
+    </div>
+  </nav>
 
-      <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-          <a href="/" > RateMyArt.com</a>
-        </div>  
-      </footer>
+  <div class="jobs">
+    <p>
+      <% if (jobs.length < 10) { %>
+      <% for (var i = 0; i < jobs.length; i++) { %>
+      <%= jobs[i].title %>
+      <% } %>
+      <%} else {%>
+      <% for (var i = 0; i < 10; i++) { %>
+      <%= jobs[i].title %>
+      <% } %>
+      <% } %>
+    </p>
+  </div>
+
+  <button onclick="viewMore()"> View More</button>
+
+  <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="/"> RateMyArt.com</a>
+    </div>
+  </footer>
 </body>
 
 
+<script>
+  '<% var x = 11;%>'
+  '<%var canViewMore = true;%>'
+
+  function viewMore() {
+    '<% if (!canViewMore) {%>'
+      alert('no more')
+    '<% } %>'
+    '<%if (jobs.length < x+10) { %>'
+    '<% for (var g = x; g < jobs.length; g++) {%>'
+      (".jobs").append("<p><%= jobs[g].title %></p>");
+    '<%}%>'
+    '<% canViewMore = false %>'
+    '<% } else {%>'
+    '<%for (var j = x; j < x + 10; j++) {%>'
+    $(".jobs").append("<p><%= jobs[j].title %></p>");
+    '<% }%>'
+    '<% x = x + 10%>'
+    '<% }%>'
+  }
+</script>
+
 </html>
-    

@@ -2,30 +2,40 @@ body {
     height: 100%;
 }
 
-.navbar.navbar-expand-sm.bg-dark.navbar-dark {
+.navbar.navbar-expand-lg.navbar-light.bg-light {
     background-color: #0dafe0 !important;
 }
 
-a {
+a.nav-link {
     color: white !important;
     font-size: 30px;
     font-family: "Avenir-Next" sans-serif;
 }
 
-a:hover {
+a.nav-link:hover {
     font-weight: 600;
 }
 
-/* .col-lg-4 {
-    border: 2px solid black;
-} */
+#news-title {
+    margin-left: 120%;
+    width: 100%;
+}
 
-.collapse-content .fa.fa-heart:hover {
-    color: #f44336 !important;
-  }
-  .collapse-content .fa.fa-share-alt:hover {
-    color: #0d47a1 !important;
-  }
+.container-fluid {
+    margin-top: 30px;
+}
+
+.col-lg-4:hover {
+    cursor: pointer;
+}
+
+#newLink {
+    color: black;
+}
+
+#newLink:hover {
+    text-decoration: none;
+}
 
 footer {
     color: white;
