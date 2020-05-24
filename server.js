@@ -41,7 +41,6 @@ app.get('/volunteer', (req, res) => {
         gl: "ca",
         hl: "en",
         location: "United States",
-        distance: "25km"
         
     };
     
