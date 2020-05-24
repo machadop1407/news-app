@@ -292,59 +292,42 @@
       </div>
     </div>
   </div>
-  <div class="card m-5"> 
-    <div class="container-fluid card-body">
-      <div class="row mb-4">
-        <div class="col-md-7">
-          <h3>
-            Job Title
-          </h3>
-          <h3>
-            Company Name
-          </h3>
-          <p>
-            Description
-          </p>
-        </div>
-        <div class="col-md-5">
-          <h3 class="pb-2">
-            Posted on (date) on (via)
-          </h3>
-          <div class="row">
-              <div class="col-md-6">
-                <h3>
-                  Full or Part time
-                </h3> 
-                <button type="button" class="btn btn-success">
-                  Lookup Job
-                </button>
-              </div>
-              <div class="col-md-6">
-                <h3>
-                  Address
-                </h3> 
-                <button type="button" class="btn btn-success">
-                  Maps
-                </button>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   
+
+  <div class="searchResults">
+
+  </div>
+
   <script>
     var input = document.getElementById('country');
-    function loadSettings() {
-        if (localStorage['country']) {
-          input.value = localStorage['country'];
-        }
-    } 
+    // function loadSettings() {
+    //     if (localStorage['country']) {
+    //       input.value = localStorage['country'];
+    //     }
+    // } 
 
     function saveSettings() {
-    localStorage['country'] = input.value;
+      var local = input.value
+      $.ajax({
+        type: "POST",
+        url: "/searchVolunteer",
+        data: {
+          "location": local 
+        },
+        success: (res) => {
+          console.log(res.jobs)
+          res.jobs.forEach(job => {
+            $('.searchResults').append('<div class="card m-5"><div class="container-fluid card-body"><div class="row mb-4"><div class="col-md-7"><h3>'+job.title+'</h3><h3>'+job.company_name+'</h3><p>'+job.description+'</p><h3 class="pb-2">Posted on '+job.extensions[0]+' on '+job.via+'</h3><div class="row"><div class="col-md-6"><h3>'+job.extensions[1]+'</h3><button type="button" class="btn btn-success">Lookup Job</button></div><div class="col-md-6"><h3>Address</h3><button type="button" class="btn btn-success">Maps</button></div></div></div></div></div></div>')
+            
+          });
+        }
+
+      });
+
     }
-    
+
+
+
   </script>
 
   <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
@@ -353,4 +336,5 @@
     </div>
   </footer>
 </body>
+
 </html>
