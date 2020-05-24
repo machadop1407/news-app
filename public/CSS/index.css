@@ -1,27 +1,30 @@
-
 body {
     height: 100%;
 }
 
-.navbar.navbar-expand-sm.bg-dark.navbar-dark { 
+.navbar.navbar-expand-sm.bg-dark.navbar-dark {
     background-color: #0dafe0 !important;
 }
 
 a {
-color: white !important;
-font-size: 30px;
-font-family: "Avenir-Next" sans-serif;
+    color: white !important;
+    font-size: 30px;
+    font-family: "Avenir-Next" sans-serif;
 }
 
 a:hover {
     font-weight: 600;
 }
 
+.col-lg-4 {
+    border: 2px solid black;
+}
+
+
 footer {
     color: white;
-    
-  }
+}
 
-  footer a {
-      font-size: 18px;
-  }
+footer a {
+    font-size: 18px;
+}

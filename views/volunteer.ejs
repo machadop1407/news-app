@@ -12,7 +12,8 @@
         <a class="navbar-brand" href="#">
           <img src="../images/logo.png" alt="logo" style="width:65px;"><!-- <img src="bird.jpg" alt="logo" style="width:40px;"> -->
         </a>
-        
+      
+
         <!-- Links -->
         <ul class="navbar-nav">
           <li class="nav-item">
@@ -26,6 +27,14 @@
           </li>
         </ul>
       </nav>
+
+      <div>
+        <p>
+          <% for (var i = 0; i < 10; i++) { %>
+            <%= jobs[i].title %>
+          <% } %>
+        </p>
+      </div>
 
       <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
