@@ -28,11 +28,19 @@
 
   <div class="jobs">
     <p>
+      <% if (jobs.length < 10) { %>
+      <% for (var i = 0; i < jobs.length; i++) { %>
+      <%= jobs[i].title %>
+      <% } %>
+      <%} else {%>
       <% for (var i = 0; i < 10; i++) { %>
-        <%= jobs[i].title %>
+      <%= jobs[i].title %>
+      <% } %>
       <% } %>
     </p>
   </div>
+
+  <button onclick="viewMore()"> View More</button>
 
   <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
@@ -41,5 +49,24 @@
   </footer>
 </body>
 
+
+<script>
+  '<% var x = 11;%>'
+  '<%var canViewMore = true;%>'
+
+  function viewMore() {
+    '<%if (jobs.length < x+10) { %>'
+    '<% for (var g = x; g < jobs.length; g++) {%>'
+      (".jobs").append("<p><%= jobs[g].title %></p>");
+    '<%}%>'
+    '<% canViewMore = false %>'
+    '<% } else {%>'
+    '<%for (var j = x; j < x + 10; j++) {%>'
+    $(".jobs").append("<p><%= jobs[j].title %></p>");
+    '<% }%>'
+    '<% x = x + 10%>'
+    '<% }%>'
+  }
+</script>
 
 </html>
