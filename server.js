@@ -11,6 +11,9 @@ const GSR = require('google-search-results-nodejs')
 let client = new GSR.GoogleSearchResults()
 
 
+const GSR = require('google-search-results-nodejs')
+let client = new GSR.GoogleSearchResults("d1c96b22c28a88b9a1815f0a604e7899876d186f80a5b6d4f97371665f54f68a")
+
 
 
 app.set('views', path.join(__dirname, 'views'))
@@ -32,6 +35,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/volunteer', (req, res) => {
+<<<<<<< HEAD
     var parameter = {
         engine: "google_jobs",
         q: "barista",
@@ -47,6 +51,27 @@ app.get('/volunteer', (req, res) => {
     // Show result as JSON
     client.json(parameter, callback)
     res.render('volunteer')
+=======
+   
+var parameter = {
+    engine: "google_jobs",
+    q: "barista",
+    google_domain: "google.com",
+    gl: "ca",
+    hl: "en",
+    location: "Canada",
+    
+};
+
+var callback = function(data) {
+  console.log(data)
+  //res.json(data)
+}
+
+// Show result as JSON
+client.json(parameter, callback)
+    //res.render('volunteer')
+>>>>>>> a5cb72ff8ba68f735c1339aef474cd519648eb56
 })
 
 app.get('/donate', (req, res) => {
@@ -56,3 +81,4 @@ app.get('/donate', (req, res) => {
 app.listen(process.env.PORT || 6969)
 
 module.exports = app
+
