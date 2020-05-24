@@ -12,7 +12,8 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/"><img src="../images/logo.png" style="width: 80px;"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -29,11 +30,11 @@
   <div class="text-center" id="news-title">
     <h1>Good News</h1>
   </div>
-  <div class="container-fluid">
-      <% if (articles > 10) { %>
-      <% for (var i = 0; i < 2; i++) { %>
-      <a href="<%=articles[i].url%>" id=newLink>
-        <div class="row text-center justify-content-center" style="margin-top: 50px;">
+  <div class="container-fluid" id="news-container">
+    <% if (articles.length > 10) { %>
+    <% for (var i = 0; i < 10; i++) { %>
+    <a href="<%=articles[i].url%>" id='newLink'>
+      <div class="row text-center justify-content-center" style="margin-top: 50px;">
         <div class="col-lg-4">
 
           <!-- Card -->
@@ -75,67 +76,65 @@
 
           </div>
         </div>
-        </div>
-      </a>
-      <!-- Card -->
-      <% }} else { %>
-      <% for (var i = 0; i < articles.length; i++) { %>
-        <a href="<%=articles[i].url%>" id=newLink>
-          <div class="row text-center justify-content-center" style="margin-top: 50px;">
-          <div class="col-lg-4">
-    
-            <!-- Card -->
-            <div class="card promoting-card">
-    
-              <!-- Card content -->
-              <div class="card-body d-flex flex-row">
-    
-                <!-- Content -->
-                <div>
-    
-                  <!-- Title -->
-                  <h4 class="card-title font-weight-bold mb-2" style="color: black;"> <%=articles[i].title%></h4>
-                  <!-- Subtitle -->
-                  <p class="card-text"><i class="far fa-clock pr-2"></i><%=articles[i].author%></p>
-    
-                </div>
-    
+      </div>
+    </a>
+    <!-- Card -->
+    <% }} else { %>
+    <% for (var i = 0; i < articles.length; i++) { %>
+    <a href="<%=articles[i].url%>" id='newLink'>
+      <div class="row text-center justify-content-center" style="margin-top: 50px;">
+        <div class="col-lg-4">
+
+          <!-- Card -->
+          <div class="card promoting-card">
+
+            <!-- Card content -->
+            <div class="card-body d-flex flex-row">
+
+              <!-- Content -->
+              <div>
+
+                <!-- Title -->
+                <h4 class="card-title font-weight-bold mb-2" style="color: black;"> <%=articles[i].title%></h4>
+                <!-- Subtitle -->
+                <p class="card-text"><i class="far fa-clock pr-2"></i><%=articles[i].author%></p>
+
               </div>
-    
-              <!-- Card image -->
-              <div class="view overlay">
-                <img class="card-img-top rounded-0" src="<%=articles[i].urlToImage%>" alt="Card image cap">
-                <a href="#!">
-                  <div class="mask rgba-white-slight"></div>
-                </a>
-              </div>
-    
-              <!-- Card content -->
-              <div class="card-body">
-    
-                <%=articles[i].description%>
-    
-              </div>
-    
-              <div class="card-footer">
-                <%=articles[i].publishedAt.toString().substring(0,10)%>
-              </div>
-    
+
             </div>
+
+            <!-- Card image -->
+            <div class="view overlay">
+              <img class="card-img-top rounded-0" src="<%=articles[i].urlToImage%>" alt="Card image cap">
+              <a href="#!">
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+
+            <!-- Card content -->
+            <div class="card-body">
+              <%=articles[i].description%>
+            </div>
+
+            <div class="card-footer">
+              <%=articles[i].publishedAt.toString().substring(0,10)%>
+            </div>
+
           </div>
         </div>
-          </a>
-          <!-- Card -->
-      <% }} %>
-    </div>
+      </div>
+    </a>
+    <!-- Card -->
+    <% }} %>
+  </div>
   </div>
 
-  <% //if (articles.length > 9) { %>
-    <div style="margin-top: 100px;" class="text-center" id="viewMoreBttn">
-        <button class="btn btn-primary" onclick="viewMore()">View More &#8635;</button>
-    </div>
-    <% //} %>
-  <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
+  <% if (articles.length > 9) { %>
+  <div style="margin-top: 100px;" class="text-center" id="viewMoreBttn">
+    <button class="btn btn-primary" onclick="viewMore()">View More &#8635;</button>
+  </div>
+  <% } %>
+  <footer class="page-footer font-small blue bottom" style="margin-top: 308px; background-color: #444c4f !important;">
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
       <a href="/"> RateMyArt.com</a>
     </div>
@@ -144,13 +143,25 @@
 </body>
 
 <script>
-   '<% var x = 11 %>'
-   
-   viewMore = () => {
-     '<% for (var i = x; i < (x + 10); i++) {%>'
-     //$( ".jobs" ).append( "<p><%= //jobs[i].title %></p>" );
-     '<% } %>'
-     '<% x = x + 10%>'
-   }
+  '<% var x = 11 %>'
+  var canViewMore = true;
+
+  viewMore = () => {
+    if (canViewMore) {
+    '<%if ((x+10) > articles.length) {%>'
+      '<% for (var i = x; i < articles.length; i++) {%>'
+        $("#news-container").append('<a href="<%=articles[i].url%>" id="newLink"><div class="row text-center justify-content-center" style="margin-top: 50px;"><div class="col-lg-4"><div class="card promoting-card"><div class="card-body d-flex flex-row"><div><h4 class="card-title font-weight-bold mb-2" style="color: black;"> <%=articles[i].title%></h4><p class="card-text"><i class="far fa-clock pr-2"></i><%=articles[i].author%></p></div></div><div class="view overlay"><img class="card-img-top rounded-0" src="<%=articles[i].urlToImage%>" alt="Card image cap"><a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><%=articles[i].description%></div><div class="card-footer"><%=articles[i].publishedAt.toString().substring(0,10)%></div></div></div></div></a>')
+      '<% } %>'
+      canViewMore = false
+    '<%} else {%>'
+      '<% for (var i = x; i < (x + 10); i++) {%>'
+        $("#news-container").append('<a href="<%=articles[i].url%>" id="newLink"><div class="row text-center justify-content-center" style="margin-top: 50px;"><div class="col-lg-4"><div class="card promoting-card"><div class="card-body d-flex flex-row"><div><h4 class="card-title font-weight-bold mb-2" style="color: black;"> <%=articles[i].title%></h4><p class="card-text"><i class="far fa-clock pr-2"></i><%=articles[i].author%></p></div></div><div class="view overlay"><img class="card-img-top rounded-0" src="<%=articles[i].urlToImage%>" alt="Card image cap"><a href="#!"><div class="mask rgba-white-slight"></div></a></div><div class="card-body"><%=articles[i].description%></div><div class="card-footer"><%=articles[i].publishedAt.toString().substring(0,10)%></div></div></div></div></a>')
+      '<% } %>'
+      '<% x = x + 10%>'
+    '<%}%>'
+    }
+  }
+
 </script>
+
 </html>

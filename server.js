@@ -22,16 +22,15 @@ app.get('/', (req, res) => {
     var today = new Date();
     var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
     var weekAgo = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() - 7)
-    // newsapi.v2.everything({
-    //     q: 'covid-19 AND cure AND curve AND flattening AND improvement',
-    //     language: 'en',
-    //     from: weekAgo,
-    //     to: date,
-    // }).then(response => {
-    //     res.render('index', {articles: response.articles})
-    // });
+    newsapi.v2.everything({
+        q: 'covid-19 AND good news AND promising AND cure',
+        language: 'en',
+        from: weekAgo,
+        to: date,
+    }).then(response => {
+        res.render('index', {articles: response.articles})
+    });
 
-    res.render('index', { articles: [{ url: "sss", title: "snsns", description: "cacabb", author: "iiiii", urlToImage: "llll", publishedAt: "vishal" }, { url: "sss", title: "snsns", description: "cacabb", author: "iiiii", urlToImage: "llll", publishedAt: "vishal" }] })
 })
 
 app.post('/searchVolunteer', (req, res) => {
@@ -47,7 +46,10 @@ app.post('/searchVolunteer', (req, res) => {
 
     };
 
-    var callback = function (data) {
+    var callback = function (data, error) {
+        if (error) {
+            throw new Error()
+        }
         res.send({ jobs: data.jobs_results })
     }
 
