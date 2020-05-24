@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
     //     res.render('index', {articles: response.articles})
     // });
 
-    res.render('index', {articles: [{url: "sss", title: "snsns", description: "cacabb", author: "iiiii", urlToImage: "llll", publishedAt: "vishal"}]})
+    res.render('index', { articles: [{ url: "sss", title: "snsns", description: "cacabb", author: "iiiii", urlToImage: "llll", publishedAt: "vishal" }] })
 })
 
 app.post('/searchVolunteer', (req, res) => {
@@ -45,25 +45,29 @@ app.post('/searchVolunteer', (req, res) => {
         gl: "ca",
         hl: "en",
         location: country,
-        
+
     };
-    
-    var callback = function(data) {
-      res.send({jobs: data.jobs_results})
+
+    var callback = function (data) {
+        res.send({ jobs: data.jobs_results })
     }
-    
+
     // Show result as JSON
     client.json(parameter, callback)
-    
+
 })
 
 app.get('/volunteer', (req, res) => {
-        res.render('volunteer')
-    })
-    
-    app.get('/donate', (req, res) => {
-        res.render('donate')
-    })
+    res.render('volunteer')
+})
+
+app.get('/donate', (req, res) => {
+    res.render('donate')
+})
+
+app.get('/aboutus', (req, res)=> {
+    res.render('aboutus')
+})
 app.listen(process.env.PORT || 6969)
 
 module.exports = app

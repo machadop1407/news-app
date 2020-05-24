@@ -21,64 +21,11 @@
         <a class="nav-item nav-link" href="/volunteer">Volunteer</a>
         <a class="nav-item nav-link" href="/donate">Donate</a>
         <a class="nav-item nav-link" href="/aboutus">About Us</a>
-
       </div>
     </div>
   </nav>
 
-  <div class="text-center" id="news-title">
-    <h1>Good News</h1>
-  </div>
-  <div class="container-fluid">
-    <div class="row text-center justify-content-center">
-      <% if (articles) { %>
-        <a href="<%=articles[0].url%>" id=newLink>
-      <div class="col-lg-4">
-
-        <!-- Card -->
-        <div class="card promoting-card">
-
-          <!-- Card content -->
-          <div class="card-body d-flex flex-row">
-
-            <!-- Content -->
-            <div>
-
-              <!-- Title -->
-              <h4 class="card-title font-weight-bold mb-2" style="color: black;"> <%=articles[0].title%></h4>
-              <!-- Subtitle -->
-              <p class="card-text"><i class="far fa-clock pr-2"></i><%=articles[0].author%></p>
-
-            </div>
-
-          </div>
-
-          <!-- Card image -->
-          <div class="view overlay">
-            <img class="card-img-top rounded-0" src="<%=articles[0].urlToImage%>" alt="Card image cap">
-            <a href="#!">
-              <div class="mask rgba-white-slight"></div>
-            </a>
-          </div>
-
-          <!-- Card content -->
-          <div class="card-body">
-
-            <%=articles[0].description%>
-
-          </div>
-
-          <div class="card-footer">
-            <%=articles[0].publishedAt.toString().substring(0,10)%>
-          </div>
-
-        </div>
-      </div>
-      </a>
-      <!-- Card -->
-      <% } %>
-    </div>
-  </div>
+  
 
   <footer class="page-footer font-small blue bottom" style="margin-top: 708px; background-color: #444c4f !important;">
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
