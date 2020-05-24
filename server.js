@@ -4,7 +4,12 @@ const app = express()
 
 //NEWS API
 const NewsAPI = require('newsapi')
-const newsapi = new NewsAPI('046b7a8dcf034c39a8dc468583bd0253')
+const newsapi = new NewsAPI('15e9098a61a3b7915a99983e1df5ae70aeedc89446ecd1e6318ddb20fb49fa3e')
+
+//GOOGLE API
+const GSR = require('google-search-results-nodejs')
+let client = new GSR.GoogleSearchResults()
+
 
 
 
@@ -18,18 +23,29 @@ app.get('/', (req, res) => {
     var weekAgo = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + (today.getDate() - 7)
     newsapi.v2.topHeadlines({
         q: 'covid-19',
-        category: 'business',
         language: 'en',
         from: weekAgo,
         to: date,
     }).then(response => {
-        console.log(response);
         res.render('index', {articles: response.articles})
     });
-    
 })
 
 app.get('/volunteer', (req, res) => {
+    var parameter = {
+        engine: "google_jobs",
+        q: "barista",
+        google_domain: "google.com",
+        gl: "ca",
+        hl: "en",
+    };
+    
+    var callback = function(data) {
+      console.log(data)
+    }
+    
+    // Show result as JSON
+    client.json(parameter, callback)
     res.render('volunteer')
 })
 
