@@ -40,7 +40,7 @@ app.post('/searchVolunteer', (req, res) => {
     var country = req.body.location
     var parameter = {
         engine: "google_jobs",
-        q: "barista",
+        q: "volunteer",
         google_domain: "google.com",
         gl: "ca",
         hl: "en",
